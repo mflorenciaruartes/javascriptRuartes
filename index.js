@@ -109,6 +109,6 @@ function respuestaSituacion() {
         alert("Seleccione la opción");
       }
       alert('Gracias por su colaboración');
+      opcionSeleccionada = mostrarMenu();
     }
 }
-  
