@@ -30,6 +30,33 @@ let ganancia = 0
 let numeroVentas = 0
 let porcentaje = 0
 
+let empleados = ['anaperez10','mariac93', 'ramon15','juang5']
+
+function ingresoUsuario(){
+  usuario = prompt('Hola equipo de Nutrimarket!\nIngrese su usuario')
+  return usuario  
+}
+
+function darBienvenida(){
+  switch(usuario){
+    case empleados[0]:
+      alert('Bienvenida Ana Perez ')
+      break;
+    case empleados[1]:
+      alert('Bienvenida Maria Castillo ')
+      break;
+    case empleados[2]:
+      alert('Bienvenida Ramon Ayala ')
+      break; 
+    case empleados[3]:
+      alert('Bienvenida Juan Gortillo ')
+      break;         
+    default:
+      alert("Opcion Incorrecta");
+      break; 
+  }
+}
+
 function solicitarVentas(){
     numeroVentas = parseInt(prompt('Ingrese el numero de ventas realizadas el día de hoy'))
     porcentaje = parseInt(prompt('Ingrese el porcentaje de ganancia'))   
@@ -48,10 +75,9 @@ function informarGanancia(){
     alert('Su ganancia del día de fue de ' + calcularGanancia())
 }
 function informarSituacion(){
-    while(ganancia >= 5000){
-        alert('Felicitaciones alcanzaste un crédito de ventas')  
-    }
-    if(ganancia >= 3000){
+    if(ganancia >= 5000){
+        alert('Felicitaciones alcanzaste un crédito de ventas')
+    }else if(ganancia >= 3000){
         alert('Tus ganancias el día de hoy fueron aceptables')
     }else if(ganancia >= 1000){
         alert('Tus ganancias el día de hoy fueron bajas')
@@ -95,7 +121,7 @@ function respuestaSituacion() {
               break;
           }
         } else {
-          alert("Ingresó una letra");
+          alert("Ingresó un dato incorrecto");
         }
       } else {
         alert("Seleccione la opción");
@@ -147,18 +173,26 @@ do{
   opcion = parseInt(prompt(crearMensaje()))
   
   if(opcion === productos.length +1){
-      alert(`Su total es de $ ${calcularTotal(total)}. \Gracias por tu visita`)
+      alert(`El total de su compra es de $ ${calcularTotal(total)}. \Gracias por tu visita`)
       break
   }
   total.push(subtotal(cantidad(productos[opcion -1]), productos [opcion -1]))
 }while(true)
 
+
 //Interaccion con el vendedor del local
-solicitarVentas();
-informarGanancia();
-informarSituacion();
-if(ganancia <= 1000){
-  respuestaSituacion();
+ingresoUsuario()
+let existeUsuario = empleados.find((el) => el === usuario)
+if(existeUsuario !== undefined){
+  darBienvenida();
+  solicitarVentas();
+  informarGanancia();
+  informarSituacion();
+  if(ganancia <= 1000){
+    respuestaSituacion();
+  }else{
+    alert('Gracias por su colaboración')
+  }
 }else{
-  alert('Gracias por su colaboración')
+ alert('Usuario incorrecto')
 }
