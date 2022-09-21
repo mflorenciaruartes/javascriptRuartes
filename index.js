@@ -30,8 +30,6 @@ let ganancia = 0
 let numeroVentas = 0
 let porcentaje = 0
 
-// let empleados = ['anaperez10','mariac93', 'ramon15','juang5']
-
 function ingresoUsuario(){
   usuario = prompt('Hola equipo de Nutrimarket!\nIngrese su usuario')
   return usuario  
@@ -77,14 +75,14 @@ function informarSituacion(){
 
 function menu() {
     let opcion = prompt(
-      "Cuál consideras que es la causa de ventas bajas (ESC para salir)\n1. Crisis económica\n2. La competencia nos supera\n3. Mala comunicación\n4. Calidad del producto"
+      "Cuál consideras que es la causa de ventas bajas (0 para salir)\n1. Crisis económica\n2. La competencia nos supera\n3. Mala comunicación\n4. Calidad del producto"
     );
     return opcion;
   }
  
 function respuestaSituacion() {
    let opcionSeleccionada = menu();
-    while (opcionSeleccionada.toLowerCase !== "esc") {
+    while (opcionSeleccionada !== "0") {
       if (opcionSeleccionada !== "") {
         opcionSeleccionada = parseInt(opcionSeleccionada);
         if (!isNaN(opcionSeleccionada)) {
@@ -178,6 +176,9 @@ productos.forEach((producto) => {
  contenedorProducto.append(column);
 })
 
+let opcion = 0
+let total = []
+let compra = []
 let botonUno = document.getElementById("btnEventoUno")
 
 botonUno.onclick = () => {
@@ -185,7 +186,7 @@ botonUno.onclick = () => {
     opcion = parseInt(prompt(crearMensaje()))
     
     if(!isNaN(opcion)){
-      if(opcion > 7){
+      if(opcion >= 7){
         alert(`Ingresó información incorrecta`)
         break
       }if(opcion === 0){
@@ -197,6 +198,7 @@ botonUno.onclick = () => {
       break
     }
     total.push(subtotal(cantidad(productos[opcion -1]), productos [opcion -1]))
+
   }while(true)
 }
 
@@ -219,54 +221,46 @@ function calcularTotal(arr){
   return arr.reduce((acc, el) => acc + el, 0)
 }
 
-let opcion = 0
-let total = []
+
 
 
 //Interaccion con el vendedor del local
+const inicio = document.getElementById('superior')
 let botonDos = document.getElementById("btnEventoDos")
-
 botonDos.onclick = () => {
   ingresoUsuario()
   let existeUsuario = empleados.find((el) => el.user === usuario)
   if(existeUsuario !== undefined){
     alert('Bienvenido ' + existeUsuario.nombre)
     let userLog = document.getElementById('usuario')
-    userLog.innerText = 'Bienvenido ' + existeUsuario.nombre 
-    solicitarVentas();
-    if(isNaN(numeroVentas) || isNaN(porcentaje)){
-      alert('No ingresó valores correctos, vuelva a intentarlo')  
-    }else{ 
-    informarGanancia();
-    informarSituacion();
-    if(ganancia <= 1000){
-      respuestaSituacion();
-    }else{
-      alert('Gracias por su colaboración')
+    userLog.innerText = 'Bienvenido ' + existeUsuario.nombre
+    botonDos.className = 'btn btn-success m-3'
+    botonDos.innerText = 'Cerrar sesion'
+    let btnNew = document.createElement('button')
+    btnNew.className = 'btn btn-success m-3'
+    btnNew.id = 'btnEventoTres'
+    btnNew.innerText = 'Calcular ventas' 
+    inicio.append(btnNew);
+    btnNew.onclick = () => {
+      solicitarVentas();
+        if(isNaN(numeroVentas) || isNaN(porcentaje)){
+          alert('No ingresó valores correctos, vuelva a intentarlo')  
+        }else{ 
+        informarGanancia();
+        informarSituacion();
+        if(ganancia <= 1000){
+          respuestaSituacion();
+        }else{
+          alert('Gracias por su colaboración')
+        }
+        }
     }
-  }}else{
+    botonDos.onclick = () => {
+      alert(`${existeUsuario.nombre} cerraste tu sesion`)
+    }
+    }else{
    alert('Usuario incorrecto')
   }
 }
 
 
-
-// ingresoUsuario()
-// let existeUsuario = empleados.find((el) => el === usuario)
-// if(existeUsuario !== undefined){
-//   darBienvenida();
-//   solicitarVentas();
-//   if(isNaN(numeroVentas) || isNaN(porcentaje)){
-//     alert('No ingresó valores correctos, vuelva a intentarlo') 
-    
-//   }else{ 
-//   informarGanancia();
-//   informarSituacion();
-//   if(ganancia <= 1000){
-//     respuestaSituacion();
-//   }else{
-//     alert('Gracias por su colaboración')
-//   }
-// }}else{
-//  alert('Usuario incorrecto')
-// }
