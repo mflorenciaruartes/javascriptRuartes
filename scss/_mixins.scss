@@ -1,0 +1,13 @@
+//mixins
+@mixin txt($Size, $Weight, $Align) {
+    font-size: $Size;
+    font-weight: $Weight;
+    text-align: $Align;
+}
+
+@mixin d-flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}

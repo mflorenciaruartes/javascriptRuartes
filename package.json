@@ -1,0 +1,16 @@
+{
+  "name": "Proyecto nutrimarket",
+  "version": "1.0.0",
+  "description": "Proyecto de sitio web Nutrimarket, dietetica y venta de productos para el bienestar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass",
+		"sass:watch": "sass --watch scss/main.scss  css/styleNew.css"
+  },
+  "author": "Maria Florencia Ruartes",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.54.0"
+  }
+}

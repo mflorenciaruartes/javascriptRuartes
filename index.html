@@ -1,39 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1er Pre Entrega del proyecto final</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-</head>
-<body>
-    <div class="container">
-        <h2>Bienvenidos a Nutrimarket</h2>
-        <div id="superior" class="d-flex flex-nowrap align-items-center justify-content-end">
-            <h4 id="usuario" class="fs-6">Ingrese su usuario</h4>
-            <button class="btn btn-primary m-3 " id="btnEventoDos">
-                Vendedor
-            </button>
-        </div>
-        <div>
-        <h3>Pequeños Electrodomésticos Nutrimarket</h3>
-        <div id="contenedor-productos" class="row"></div>
-        </div>
-        <div id="inferior" class="row">
-            <div class="col-md-4 mx-auto">
-            <button class="btn btn-success m-3 " id="btnEventoUno">
-                Comprar
-            </button>
-            </div>
-        </div>
-    </div>    
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Florencia Ruartes"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <!-- metas SEO -->
+    <meta name="description" content="Dietética, electrodomésticos y vajilla para una cocina natural e integral. Productos saludables para tu bienestar."/>
+    <meta name="keywords" content="dietética, electrodomésticos, vajilla, recetas saludables, cocina natural"/>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- mi CSS -->
+    <link rel="stylesheet" href="css/styleNew.css" />
 
-    <script src="index.js"></script>
-</body>
+    <title>Nutrimarket - Tu lugar saludable</title>
+  </head>
+  <body>
+    <!-- inicia nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navBar">
+      <div class="container-fluid flex-lg-column px-lg-0">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/logo-foto.png" alt="logo de nutrimarket. Te lleva al inicio del sitio"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse bg-green nav__w" id="navbarSupportedContent"  >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav__ul">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="pgs/productos.html">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pgs/go-natural.html">Go Natural</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pgs/nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pgs/contacto.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- ends nav -->
+
+    <header>
+      <img src="img/header.png"  class="img-fluid w-100" alt="Imagen de suculenta en portada con frase Tu lugar saludable"/>
+    </header>
+    <main>
+      <h1>Nutrimarket tu lugar Saludable y Natural</h1>
+      <!-- inicia productos -->
+      <section class="container-fluid bg-greenl1 px-lg-0">
+        <h2>PRODUCTOS</h2>
+        <div class="row w-100 d-flex justify-content-around">
+          <figure class="col-lg-3">
+            <figcaption>Almacen</figcaption>
+            <a href="pgs/productos.html">
+              <img src="img/almacen.jpg" alt="productos de almacen, semillas, especias y condimentos" />
+            </a>
+          </figure>
+          <figure class="col-lg-3">
+            <figcaption>Pequeños Electrodomésticos</figcaption>
+            <a href="pgs/productos.html">
+              <img src="img/electro.jpg" alt="productos pequeños electrodomesticos. Licuadora y procesadora" />
+            </a>
+          </figure>
+          <figure class="col-lg-3">
+            <figcaption>Hogar</figcaption>
+            <a href="pgs/productos.html">
+              <img src="img/hogar.jpg"  alt="productos para el hogar. Taza, cuchara y jarro" />
+            </a>
+          </figure>
+        </div>
+      </section>
+      <!-- ends productos -->
+      <!-- inicia go natural -->
+      <section>
+        <h2>GO NATURAL</h2>
+        <article class="card mb-3 border-0">
+          <div class="row g-0">
+            <div class="col-lg-4">
+              <img src="img/trufas.jpg" class="img-fluid rounded-start p-3 mx-auto" alt="receta de trufas de chocolate"/>
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h3 class="card-title pt-2">Trufas de chocolate</h3>
+                <p class="card-text pt-3"> La receta de trufas de chocolate es una gran idea para postres, cumpleaños de chicos y además, te salva los antojos de comer algo dulce. INGREDIENTES ½ taza de almendras ½ taza de nueces  ½ taza de dátiles sin carozos 1 cdta de extracto de vainilla 2 cdtas de cacao en polvo Pizca de sal 1/3 taza de coco rallado </p>
+                <a class="btn btn-base" href="pgs/go-natural.html">Ver recetas >></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- enda go natural -->
+      <!-- inicia contacto -->
+      <section class="bg-greenl2">
+        <h2>CONTACTATE CON NOSOTROS</h2>
+        <div class="row w-100">
+          <form action="envio.php" class="index__form-div col-lg-6">
+            <label for="name">Nombre y Apellido</label>
+            <input type="text" id="name" />
+            <label for="email">Email</label>
+            <input type="email" id="email" />
+            <label for="consulta">Consulta</label>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="Enviar" class="input__enviar mt-4"/>
+          </form>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3139.6765711018998!2d-59.14445788589351!3d-32.30089508111835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b10998efc5976f%3A0xdbd65ad640d91764!2sJusto%20Jos%C3%A9%20de%20Urquiza%20388%2C%20Rosario%20del%20Tala%2C%20Entre%20R%C3%ADos!5e1!3m2!1ses-419!2sar!4v1655485728426!5m2!1ses-419!2sar" 
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="col-lg-6 my-3"
+          ></iframe>
+        </div>
+      </section>
+      <!-- ends contacto -->
+    </main>
+    <footer>
+      <div class="w-50">
+        <h2>NUTRIMARKET</h2>
+        <p>Nutrimarket es una tienda de productos que te ayudarán a llevar una vida saludable, podrás encontrar desde la mejor calidad de ingredientes a electrodomésticos y elementos de bazar para que tus platos transmitan bienestar</p>
+      </div>
+      <div>
+        <h3>Más info</h3>
+        <ul>
+            <li><a href="pgs/productos.html">Productos</a></li>
+            <li> <a href="pgs/go-natural.html">Go Natural</a> </li>
+            <li><a href="pgs/nosotros.html">Nosotros</a></li>
+            <li><a href="pgs/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <a href="pgs/contacto.html">
+          <img src="img/contacto.png" alt="contactate con nosotros"/>
+        </a>
+      </div>
+      <div>
+        <h3>Redes Sociales</h3>
+        <a href="https://facebook.com/" target="_blank">
+          <img src="img/facebook.png" alt="Ingresar a facebook"/>
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img src="img/instagram.png" alt="Ingresar a instagram"/>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="../js/bootstrap.min.js"></script> 
+  </body>
 </html>

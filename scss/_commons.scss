@@ -1,0 +1,316 @@
+
+h1,
+h2,
+h3{
+    font-family: $fontMain;
+}
+
+
+h1 {
+    color: map-get($map: $color, $key: v1);
+    @include txt($textLg, $textBold, $textCenter);
+    padding: 10px 0;
+    animation-name: aparecer2;
+    animation-duration: 3s;
+}
+
+h2 {
+    color: map-get($map: $color, $key: v1);
+    @include txt($textMd, $textBold, $textLeft);
+    padding-top: 10px;
+}
+@keyframes aparecer2{
+    from{opacity: 0;}
+    to{opacity: 1;}
+    }
+h3{
+    color:map-get($map: $color, $key: negro);
+    @include txt($textSm, $textRegular, $textLeft);
+}
+p{
+    color:map-get($map: $color, $key: negro);
+    @include txt($textXsm, $textXlight, $textJustify);
+    line-height: $lineH1;
+}
+
+//backgrounds
+.bg-green{
+    background-color:map-get($map: $color, $key: v1);
+}
+.bg-greenl0{
+    background-color: map-get($map: $color, $key: v6);
+}
+.bg-greenl1{
+    background-color:map-get($map: $color, $key: v5);
+}
+.bg-greenl2{
+    background-color: map-get($map: $color, $key: v4);
+}
+.bg-greenl3{
+    background-color: map-get($map: $color, $key: v3);
+}
+.bg-linear1{
+    background: linear-gradient(to right,map-get($map: $color, $key: v1), map-get($map: $color, $key: blanco));
+}
+
+
+//extends
+.btn-base{
+    background-color: map-get($map: $color, $key: v1);
+    color: map-get($map: $color, $key: blanco);
+    @include txt($textXsm, $textXlight, $textCenter);
+    text-decoration: $textDnone;
+    &:hover{
+        font-weight: $textRegular;
+        color: map-get($map: $color, $key: blanco);
+    }
+}
+
+.btn-mod{
+    @extend .btn-base;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+//index section figure 
+section {
+        @include d-flex(column, space-around, center);
+        div figure {
+            figcaption {
+                color: map-get($map: $color, $key: negro);
+                @include txt($textSm, $textRegular, $textCenter);
+            }
+            a{
+                @include d-flex(row, center, normal);
+                img{
+                    width: $w-70;
+                    border: solid map-get($map: $color, $key: negro) 1px;
+                    @media (min-width: 992px){
+                        width: $w-100;
+                        &:hover{
+                            animation-name: aparecer1;
+                            animation-duration: 1s;
+                        }
+                        @keyframes aparecer1{
+                            from{opacity: 0.7;}
+                            to{opacity: 1;}
+                            }
+
+                    }
+                }
+            }
+
+        }
+}
+
+//index section article
+section article div {
+    a {
+        color: map-get($map: $color, $key: negro);
+        @include txt($textSm, $textBold, $textCenter);
+        text-decoration: $textDnone;
+        }
+        img{
+            width: $w-70;
+            @include d-flex(row, normal, center);
+            @media (min-width: 992px){
+                width: $w-100;
+            }
+        }
+}
+
+
+//index y contacto form
+form{
+    padding-left: 10px;
+    padding-bottom: 10px;
+    @include d-flex(column, normal, center);
+    text-align: center;
+    label, input {
+        display: block;
+        color: map-get($map: $color, $key: negro);
+        @include txt($textSm, $textXlight, $textCenter);
+        line-height: $lineH1;
+        width: $w-60;
+    }
+    textarea{
+        color: map-get($map: $color, $key: negro);
+        width: $w-90;
+        height: $h-30;
+    }
+} 
+
+.input__enviar {
+    width: $w-30;
+    @include d-flex(row, center, flex-start);
+}
+.section__iframe--md{
+    width: $w-90;
+    height: $h-30;
+}
+@media (min-width: 992px){
+    .index__form-div {
+        padding-top: 20px;
+    }
+}
+
+
+//Producto
+.d-div__img{
+    @include d-flex(row, center, center);
+}
+
+.img-p{
+    width: $w-60;
+    padding: 10px;
+}
+
+article div ul li{
+    @include txt($textXsm, $textLight, $textLeft);
+    list-style: square;
+}
+
+//Go natural
+//Go natural - aside
+.gonatural__aside {
+    grid-area: aside;
+    @include d-flex(column, flex-start, center);
+}
+aside ul {
+    list-style: none;
+    line-height: $lineH1;
+    a {
+        color: map-get($map: $color, $key: negro);
+        @include txt($textSm, $textXlight, $textLeft);
+        text-decoration: $textDnone;
+        &:hover{
+            color: map-get($map: $color, $key: negro);
+            font-weight: $textRegular;
+        }
+    }
+}
+//Go natural - nav pages
+.page-hover{
+    color: map-get($map: $color, $key: v1);
+    &:hover{
+        color: map-get($map: $color, $key: v3);
+        font-weight: $textBold;
+        transition: none;
+    }
+}
+
+@media (min-width: 992px){
+.contenedor{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: repeat(5, auto);
+    grid-template-areas: 
+    "nav nav"
+    "header header"
+    "h1 h1"
+    "section aside"
+    "pie pie";
+} 
+}
+
+.mainNav{
+    grid-area: nav;
+}
+
+.header{
+    grid-area: header;
+}
+.titulo{
+    grid-area: h1;
+}
+.section{
+    grid-area: section;  
+}
+.pie{
+    grid-area: pie;
+}
+
+//footer
+footer {
+    width: $w-100;
+    height: $h-a;
+    padding: 20px 0;
+    background-color: map-get($map: $color, $key: v1);
+    @include txt($textSm, $textLight, $textCenter);
+    line-height: $lineH0;
+    text-decoration: $textDnone;
+    color: map-get($map: $color, $key: blanco);
+    @include d-flex(column, space-around, center);
+    a img{
+        width: 40px;
+    }
+    h2{
+        color: map-get($map: $color, $key: blanco);
+        @include txt($textXsm, $textLight, $textCenter)
+    }
+    h3{
+        color: map-get($map: $color, $key: blanco);
+        @include txt($textXxsm, $textLight, $textCenter);
+    }
+    p{
+        color: map-get($map: $color, $key: blanco);
+        @include txt($textXxsm, $textXxlight, $textCenter);
+        line-height: $lineH01;
+    }
+    ul{ 
+        padding: 0;
+        li{
+            list-style: none;
+            a{
+            color: map-get($map: $color, $key: negro);
+            @include txt($textXxsm, $textXlight, $textLeft);
+            text-decoration: $textDnone;
+            &:hover{
+                color: map-get($map: $color, $key: blanco);
+            }
+            }
+        }
+    }
+    @media (min-width: 992px){
+        flex-direction: row;
+        h2, p{
+                text-align: left;
+        }
+
+    }
+}
+
+//Error 404
+.img__e{
+    margin: 0;
+    width: $w-100;
+    height: 100vh;
+    border: none;
+    background-color: map-get($map: $color, $key: v7);
+    @include d-flex(column, flex-end, center);
+    div{
+        @include d-flex(column, flex-start, center);
+        h1{
+            padding-top: 40px;
+            @include txt($textMd,$textBold, $textCenter);
+            @media (min-width: 992px) {
+                font-size: $textLg;
+            }
+        }
+        h2{
+            animation-name: aparecer2;
+            animation-duration: 2s;
+            @include txt($textSm, $textLight, $textCenter);
+            @media (min-width: 992px){
+                font-size: $textMd;
+            };
+            a{
+                color: map-get($map: $color, $key: v1);
+                text-decoration: none;
+                &:hover{
+                    font-weight: $textBold;
+                }
+            }
+        }
+    }
+}

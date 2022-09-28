@@ -1,0 +1,45 @@
+//inicia navBar
+
+#navBar{ 
+    div {
+        a{
+            @media (min-width: 992px){
+                display: flex;
+                justify-content: center;
+            }
+            img{
+                width: $w-50;
+                @media (min-width: 992px){
+                    width: $w-80;
+                }    
+            }
+        }
+    }
+    div{
+            @media (min-width: 992px){
+                .nav__w{
+                    width: $w-100;
+                }
+            }   
+            ul{
+                li a{
+                    @include txt($textSm, $textRegular, $textCenter);
+                    color: map-get($map: $color, $key: negro);
+                    &:hover{
+                        color: map-get($map: $color, $key: blanco);
+                    }
+                }
+            }    
+    } 
+
+}
+
+@media (min-width: 992px){
+    .nav__ul{
+        width: $w-100;
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+}
+

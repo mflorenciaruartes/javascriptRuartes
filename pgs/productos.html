@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Florencia Ruartes"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <!-- metas SEO -->
+    <meta name="description" content="Todos los productos que necesitas en tu hogar para cocinar rico, lindo, sano y natural.">
+    <meta name="keywords" content="dietética, ingredientes, integral, cocina natural, vajilla, pequeños electrodomésticos">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- mi CSS -->
+    <link rel="stylesheet" href="../css/styleNew.css">
+    <title>Productos | Nutrimarket - Tu lugar saludable</title>
+  </head>
+  <body>
+    <!-- inicia nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" id="navBar"> 
+      <div class="container-fluid flex-lg-column px-lg-0">
+        <a class="navbar-brand" href="../index.html">
+          <img src="../img/logo-foto.png" alt="logo de nutrimarket. Te lleva al inicio del sitio"> 
+        </a> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse bg-green nav__w" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav__ul">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="productos.html">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="go-natural.html">Go Natural</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- ends nav -->
+    <header>
+      <img src="../img/header.png" class="img-fluid w-100" alt="Imagen de suculenta en portada con frase Tu lugar saludable">
+    </header>
+    <main>
+      <div class="col-md-12">
+        <div id="contenedorUsuario" hidden>
+        <div class="d-flex align-items-center justify-content-end" id="contenedorUsuario">
+          <p id="textoUsuario">Bienvenido:</p>
+          <button class="btn btn-success m-3" id="btnCalcularVentas">Calcular ventas</button>
+          <button class="btn btn-danger m-3" id="btnCerrarSesion">Cerrar sesión</button>
+        </div>
+        </div>
+        <div id="contenedorIdentificacion">
+          <h2>Acceso equipo de Nutrimarket</h2>
+          <form id="formularioIdentificacion">
+            <div class="row col-md-12 ">
+              <div class="col-md-8 text-center">
+                <div>
+                  <label class="form-label">Ingrese su usuario</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputUsuario"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-secondary">
+                  Ingresar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="contenedorVentasUsuario" class="row"></div>
+          </div>
+        </div>
+        <!-- Inicia Modal -->
+        <div class="modal fade" id="modalAddProduct" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Calcular Ventas</h5>
+              <button type="button" class="btn-close btnCerrarModalAgregarProducto" aria-label="Close"></button>
+            </div>
+            <form id="formularioAgregarProducto">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label">Facturación del día</label>
+                  <input type="number" class="form-control" id="inputPrecioCompra" required/>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Porcentaje de ganancia</label>
+                  <input type="number" class="form-control" id="inputPrecioVenta" required/>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btnCerrarModalAgregarProducto">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Calcular</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+      <hr/>
+
+
+      <h1>Productos</h1>
+      <section class="container-fluid px-lg-0">
+      <!-- inicia article I -->
+        <article class="card mb-3 border-0 bg-greenl1 w-100" style="max-width: 100%;">
+          <div class="row g-0">
+            <div class="col-lg-4 d-div__img">
+              <img src="../img/almacen.jpg" class="img- fluid rounded-start img-p" alt="productos de almacen, semillas, especias y condimentos">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h2 class="card-title pt-2">Almacen</h2>
+                <h3>Todos los productos para tu alacena</h3>
+                <ul>
+                  <li>Legumbres</li>
+                  <li>Cereales</li>
+                  <li>Aceites y Condimentos</li>
+                  <li>Frutos Secos</li>
+                  <li>Semillas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- ends article I -->
+        <!-- inicia article II -->
+        <article class="card mb-3 border-0 bg-greenl2 w-100" style="max-width: 100%;">
+          <div class="row g-0">
+            <div class="col-lg-4 d-div__img">
+              <img src="../img/hogar.jpg" class="img-fluid rounded-3 img-p" alt="productos para el hogar. Taza, cuchara y jarro">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h2 class="card-title pt-2">Hogar</h2>
+                <h3>Todos los productos para servir y presentar tus comidas</h3>
+                <ul>
+                  <li>Platos</li>
+                  <li>Cuencos y Bowls</li>
+                  <li>Tazas y Vasos</li>
+                  <li>Tarteras</li>
+                  <li>Bandejas y Soportes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- ends article II -->
+      </section>
+      <!-- inicia section compra -->
+      <h2>Pequeños Electrodomésticos</h2>
+      <section id="ProdList" class="container-fluid bg-greenl1 px-lg-0 d-flex align-items-center">
+        <article class="row mb-3 bg-greenl3 w-100 d-flex align-items-center justify-content-around">
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/electro.jpg" alt="Licuadora" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Licuadora</figcaption>
+            <p class="prod-precio">$ 1200</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/batidora.jpg" alt="Batidora" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Batidora</figcaption>
+            <p class="prod-precio">$ 1000</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/cafetera.jpg" alt="Cafetera" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Cafetera</figcaption>
+            <p class="prod-precio">$ 1800</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/pava.jpg" alt="Pava" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Pava eléctrica</figcaption>
+            <p class="prod-precio">$ 900</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/procesadora.jpg" alt="Procesadora" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Procesadora</figcaption>
+            <p class="prod-precio">$ 2200</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/tostadora.jpg" alt="Tostadora" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Tostadora</figcaption>
+            <p class="prod-precio">$ 1100</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/tostadora2.jpg" alt="tostadora" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Tostadora</figcaption>
+            <p class="prod-precio">$ 2200</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/juguera.jpg" alt="Juguera" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Juguera</figcaption>
+            <p class="prod-precio">$ 1560</p>
+            <button class="btn btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+          <figure class="card col-lg-3 m-2 d-flex align-items-center products__figure">
+            <img src="../img/procesadora2.jpg" alt="Procesadora Liliana" class="img-fluid rounded-3 img-p prod-img">
+            <figcaption class="prod-nombre">Procesadora Liliana</figcaption>
+            <p class="prod-precio">$ 1800</p>
+            <button class="btn btn-base btn-carrito">
+                Comprar 
+            </button> 
+          </figure>
+        </article>
+        <!-- ends section compra -->
+      </section> 
+      <!--Inicio Carrito de Compras-->
+      <section id="carritoCompras">
+        <h2>Carrito</h2>
+        <div class="row mb-3 bg-greenl3 w-100 d-flex align-items-center justify-content-around">
+            <div class="col-6 text-center">
+                <h5>Producto</h5>
+            </div>
+            <div class="col-2 text-center">
+                <h5>Precio</h5>
+            </div>
+            <div class="col-4 text-center">
+                <h5>Cantidad</h5>
+            </div>
+        </div>
+        <div class="carritoContainer w-100">
+        </div>
+        <div class="carritoTotal bg-greenl3 w-100 d-flex align-items-center justify-content-around text-center">
+            <h5 class="col-6">Total</h5>
+            <h5 class="col-2 totalCarrito">$ 0</h5>
+            <button button type="button" class="btn btn-base pagarBtn col-4 m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Pagar</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="modal-title" id="exampleModalLabel">Gracias por su compra</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn button" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+    <!--Fin Carrito de Compras-->
+    </main>
+    <footer>
+      <div class="w-50">
+        <h2>NUTRIMARKET</h2>
+        <p>Nutrimarket es una tienda de productos que te ayudarán a llevar una vida saludable, podrás encontrar desde la mejor calidad de ingredientes a electrodomésticos y elementos de bazar para que tus platos transmitan bienestar</p>
+      </div>
+      <div>
+        <h3>Más info</h3>
+        <ul>
+          <li><a href="productos.html">Productos</a></li>
+          <li> <a href="go-natural.html">Go Natural</a> </li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <a href="contacto.html">
+          <img src="../img/contacto.png" alt="contactate con nosotros"/>
+        </a>
+      </div>
+      <div>
+        <h3>Redes Sociales</h3>
+        <a href="https://facebook.com/" target="_blank">
+          <img src="../img/facebook.png" alt="Ingresar a facebook"/>
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img src="../img/instagram.png" alt="Ingresar a instagram"/>
+        </a>
+      </div>
+    </footer>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/filtros.js"></script>
+  </body>
+</html>
