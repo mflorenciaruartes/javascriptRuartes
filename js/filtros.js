@@ -15,6 +15,11 @@ let ganancia;
 let facturacion
 let porcentaje;
 
+let btnCrisis;
+let btnCompetencia;
+let btnProducto;
+let btnComunicacion;
+
 let empleados = [
     {nombre : 'ANA PEREZ', user:'anaperez10'},
     {nombre: 'MARIA CASTILLO', user:'mariac'},
@@ -33,13 +38,17 @@ function inicializarElementos() {
     formulario = document.getElementById("formularioAgregarProducto");
     facturacion = document.getElementById("inputPrecioCompra");
     porcentaje = document.getElementById("inputPrecioVenta");
-    contenedorProductos = document.getElementById("contenedorVentasUsuario");
+    contenedorVentas = document.getElementById("contenedorVentasUsuario");
 
-    
     botonesCerrarModalAgregarProducto = document.getElementsByClassName("btnCerrarModalAgregarProducto");
     modalAddProduct = document.getElementById("modalAddProduct");
     btnCalcularVentas = document.getElementById("btnCalcularVentas");
     modal = new bootstrap.Modal(modalAddProduct);
+
+    btnCrisis = document.getElementsByClassName("btnCrisis");
+    btnCompetencia = document.getElementsByClassName("btnCompetencia");
+    btnProducto = document.getElementsByClassName("btnProducto");
+    btnComunicacion = document.getElementsByClassName("btnComunicacion");
 }    
 
 function inicializarEventos() {
@@ -47,10 +56,15 @@ function inicializarEventos() {
     btnCalcularVentas.onclick = abrirModalAgregarProducto;
     formulario.onsubmit = (event) => validarFormulario(event);
     botonLimpiarStorage.onclick = eliminarStorage;
+    btnCrisis.onclick = comunicarCrisis;
+    btnCompetencia.onclick = comunicarCompetencia;
+    btnProducto.onclick = comunicarProducto;
+    btnComunicacion.onclick = comunicarComunicacion;
 
     for (const boton of botonesCerrarModalAgregarProducto) {
       boton.onclick = cerrarModalAgregarProducto;
     }
+    
 }
 
   function identificarUsuario(event) {
@@ -83,7 +97,7 @@ function inicializarEventos() {
     localStorage.clear();
     existeUsuario = "";
     mostrarFormularioIdentificacion();
-    contenedorProductos.innerHTML = ``;
+    contenedorVentas.innerHTML = ``;
   }
 
 function abrirModalAgregarProducto() {
@@ -114,17 +128,77 @@ function informarGanancia(){
     informe.className = 'col-md-12'
     informe.innerHTML = `
     <div class="card">
-            <div class="card-body">
-            <p class="card-text">Su ganancia del día de fue de  <b>${calcularGanancia()}</b></p>
+        <div class="card-body">
+        <p class="card-text">Su ganancia del día de fue de <b> $ ${calcularGanancia()}</b></p>
+        <h3>${informarSituacion()}</h3>
+        </div>
+    </div>
+    <div id="contenedorInforme">
+        <form id="formularioInforme">
+            <div class="row col-md-12 ">
+                <div class="col-md-12 text-center">
+                <h3>¿Por qué consideras que las ventas son ${detectarSituacion()}?</h3>
+                </div>
+                <div class="col-md-12 d-flex align-items-center justify-content-around">
+                    <button class="btn btn-secondary btnCrisis">Crisis económica</button>
+                    <button type="submit" class="btn btn-secondary btnCompetencia">La competencia</button>
+                    <button type="submit" class="btn btn-secondary btnComunicacion">Mala comunicación</button>
+                    <button type="submit" class="btn btn-secondary btnProducto">Calidad del producto</button>
+                </div>
             </div>
+        </form>
+    </div>
     </div>`; 
-    contenedorProductos.append(informe);
+    contenedorVentas.append(informe);
 }
 
 function calcularGanancia(){
     ganancia = (facturacion*porcentaje)/100
     return ganancia
 }   
+
+
+let situacion
+let situacionPositiva
+let situacionNegativa
+
+function informarSituacion(){
+   situacion =  ganancia > 5000 ? situacionPositiva = 'Felicitaciones alcanzaste un crédito de ventas' : situacionNegativa = 'Tus ganancias el día de hoy fueron bajas'
+   return situacion
+}
+
+let situacionDos
+let situacionAlta
+let situacionBaja
+
+function detectarSituacion(){
+    situacionDos =  ganancia > 5000 ? situacionAlta = 'altas' : situacionBaja = 'bajas'
+    return situacionDos
+ }
+
+
+function comunicarCrisis (){
+    alert('Lo trataremos en el área macrocomercial')
+} 
+
+function comunicarCompetencia(){
+    alert('Lo trataremos en el área comercial')
+} 
+
+function comunicarProducto(){
+    alert('Lo trataremos en el área de producción')
+} 
+
+function comunicarComunicacion(){
+    alert('Lo trataremos en el área de marketing')
+} 
+
+const usuarioInfo = {
+    ...existeUsuario,
+    email: 'nutrimarket@ventas.com',
+    telefono: '112354782'
+}
+console.log(usuarioInfo)
 
 //INTERACCION CON EL COMPRADOR
 const prodContainer = document.querySelector("#ProdList")
