@@ -20,6 +20,12 @@ let btnCompetencia;
 let btnProducto;
 let btnComunicacion;
 
+let btnDatosUser;
+let formularioUser;
+let domicilio = "";
+let email = ""; 
+let botonToast;
+
 let empleados = [
     {nombre : 'ANA PEREZ', user:'anaperez10'},
     {nombre: 'MARIA CASTILLO', user:'mariac'},
@@ -45,25 +51,36 @@ function inicializarElementos() {
     btnCalcularVentas = document.getElementById("btnCalcularVentas");
     modal = new bootstrap.Modal(modalAddProduct);
 
-    btnCrisis = document.getElementsByClassName("btnCrisis");
-    btnCompetencia = document.getElementsByClassName("btnCompetencia");
-    btnProducto = document.getElementsByClassName("btnProducto");
-    btnComunicacion = document.getElementsByClassName("btnComunicacion");
+    botonesCerrarModalAgregarInfo = document.getElementsByClassName("btnCerrarModalAgregarInfo");
+    modalAddUser = document.getElementById("modalDatosUser");
+    btnDatosUser = document.getElementById("btnDatos");
+    modalUser = new bootstrap.Modal(modalAddUser);
+
+    formularioUser = document.getElementById("formularioAgregarInfo");
+    domicilio = document.getElementById("inputDomicilio");
+    email = document.getElementById("inputEmail");
+    contenedorDatosUser = document.getElementById("contenedorDatosUsuario")
+    botonToast = document.getElementById("btnGuardar");
+
 }    
 
 function inicializarEventos() {
     formularioIdentificacion.onsubmit = (event) => identificarUsuario(event);
     btnCalcularVentas.onclick = abrirModalAgregarProducto;
     formulario.onsubmit = (event) => validarFormulario(event);
-    botonLimpiarStorage.onclick = eliminarStorage;
-    btnCrisis.onclick = comunicarCrisis;
-    btnCompetencia.onclick = comunicarCompetencia;
-    btnProducto.onclick = comunicarProducto;
-    btnComunicacion.onclick = comunicarComunicacion;
+
+    btnDatosUser.onclick = abrirModalAgregarUser;
+    formularioUser.onsubmit = (event) => validarFormUser(event);
+
+    botonLimpiarStorage.onclick = mostrarSwal;
 
     for (const boton of botonesCerrarModalAgregarProducto) {
       boton.onclick = cerrarModalAgregarProducto;
     }
+
+    for (const boton of botonesCerrarModalAgregarInfo) {
+        boton.onclick = cerrarModalAgregarInfo;
+      }
     
 }
 
@@ -100,7 +117,31 @@ function inicializarEventos() {
     contenedorVentas.innerHTML = ``;
   }
 
+  function mostrarSwal() {
+    Swal.fire({
+        title: 'Cerrar sesión',
+        text: "¿Estás seguro que quieres cerrar sesión?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Cerrar sesión'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Tu sesión fue cerrada correctamente',
+            `Hasta la próxima ${existeUsuario.nombre}`
+          )
+          eliminarStorage();
+        }
+      })
+  }
+
+
+
+//CALCULAR VENTAS  
 function abrirModalAgregarProducto() {
+    contenedorVentas.innerHTML = `` 
     modal.show();
 }
 
@@ -134,22 +175,32 @@ function informarGanancia(){
         </div>
     </div>
     <div id="contenedorInforme">
-        <form id="formularioInforme">
+        <div id="formularioInforme">
             <div class="row col-md-12 ">
                 <div class="col-md-12 text-center">
                 <h3>¿Por qué consideras que las ventas son ${detectarSituacion()}?</h3>
                 </div>
                 <div class="col-md-12 d-flex align-items-center justify-content-around">
-                    <button class="btn btn-secondary btnCrisis">Crisis económica</button>
-                    <button type="submit" class="btn btn-secondary btnCompetencia">La competencia</button>
-                    <button type="submit" class="btn btn-secondary btnComunicacion">Mala comunicación</button>
-                    <button type="submit" class="btn btn-secondary btnProducto">Calidad del producto</button>
+                    <button class="btn btn-secondary m-3" id="btnCrisis">Economía</button>
+                    <button type="submit" class="btn btn-secondary" id="btnCompetencia">La competencia</button>
+                    <button type="submit" class="btn btn-secondary" id="btnComunicacion">La comunicación</button>
+                    <button type="submit" class="btn btn-secondary" id="btnProducto">Calidad del producto</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
     </div>`; 
     contenedorVentas.append(informe);
+    
+    btnCrisis = document.getElementById("btnCrisis");
+    btnCompetencia = document.getElementById("btnCompetencia");
+    btnProducto = document.getElementById("btnProducto");
+    btnComunicacion = document.getElementById("btnComunicacion");
+
+    btnCrisis.onclick = comunicarCrisis;
+    btnCompetencia.onclick = comunicarCompetencia;
+    btnProducto.onclick = comunicarProducto;
+    btnComunicacion.onclick = comunicarComunicacion;
 }
 
 function calcularGanancia(){
@@ -177,28 +228,93 @@ function detectarSituacion(){
  }
 
 
-function comunicarCrisis (){
-    alert('Lo trataremos en el área macrocomercial')
+function comunicarCrisis() {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Lo trataremos en el área macrocomercial',
+      })
+    contenedorVentas.innerHTML = ``  
 } 
 
 function comunicarCompetencia(){
-    alert('Lo trataremos en el área comercial')
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Lo trataremos en el área comercial',
+      })
+    contenedorVentas.innerHTML = ``   
 } 
 
 function comunicarProducto(){
-    alert('Lo trataremos en el área de producción')
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Lo trataremos en el área de producción',
+      })
+    contenedorVentas.innerHTML = ``    
 } 
 
 function comunicarComunicacion(){
-    alert('Lo trataremos en el área de marketing')
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Lo trataremos en el área de marketing',
+      })
+    contenedorVentas.innerHTML = ``   
 } 
 
-const usuarioInfo = {
-    ...existeUsuario,
-    email: 'nutrimarket@ventas.com',
-    telefono: '112354782'
+
+//AGREGAR DATOS USUARIO
+function abrirModalAgregarUser() {
+    contenedorDatosUser.innerHTML = `` 
+    modalUser.show();
 }
-console.log(usuarioInfo)
+
+function validarFormUser(event) {
+event.preventDefault();
+domicilio = inputDomicilio.value;
+email = inputEmail.value;
+
+formularioUser.reset();
+informarDatos();
+modalUser.hide();
+
+}  
+
+function cerrarModalAgregarInfo() {
+    formularioUser.reset();
+    modalUser.hide();
+}
+console.log(domicilio)
+
+function mostrarToast() {
+    Toastify({
+      text: "Sus datos se cargaron correctamente",
+      duration: 3000,
+      close: true,
+    }).showToast();
+  }
+
+
+function informarDatos(){
+    mostrarToast();
+    let informe = document.createElement('div')
+    informe.className = 'col-md-12'
+    informe.innerHTML = `
+    <div class="card">
+        <div class="card-body">
+        <h3>Usuario: ${existeUsuario.nombre}</h3>
+        <p class="card-text">Domicilio: <b> ${domicilio}</b></p>
+        <p class="card-text">Email: <b> ${email}</b></p>
+        </div>
+    </div>
+    </div>`; 
+    contenedorDatosUser.append(informe);
+    
+}
+
+
 
 //INTERACCION CON EL COMPRADOR
 const prodContainer = document.querySelector("#ProdList")

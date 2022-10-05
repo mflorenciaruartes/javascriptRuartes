@@ -11,6 +11,7 @@
     <meta name="keywords" content="dietética, ingredientes, integral, cocina natural, vajilla, pequeños electrodomésticos">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- mi CSS -->
     <link rel="stylesheet" href="../css/styleNew.css">
     <title>Productos | Nutrimarket - Tu lugar saludable</title>
@@ -85,34 +86,65 @@
             <div id="contenedorVentasUsuario" class="row">
             </div>
           </div>
+          <div class="col-md-12">
+            <div id="contenedorDatosUsuario" class="row">
+            </div>
+          </div>
         </div>
-        <!-- Inicia Modal -->
+        <!-- Inicia Modal Calcular Ganancias -->
         <div class="modal fade" id="modalAddProduct" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Calcular Ventas</h5>
+                <button type="button" class="btn-close btnCerrarModalAgregarProducto" aria-label="Close"></button>
+              </div>
+              <form id="formularioAgregarProducto">
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label class="form-label">Facturación del día</label>
+                    <input type="number" class="form-control" id="inputPrecioCompra" required/>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Porcentaje de ganancia</label>
+                    <input type="number" class="form-control" id="inputPrecioVenta" required/>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btnCerrarModalAgregarProducto">Cerrar</button>
+                  <button type="submit" class="btn btn-primary">Calcular</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Inicia Modal Datos Usuario -->
+      <div class="modal fade" id="modalDatosUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Calcular Ventas</h5>
-              <button type="button" class="btn-close btnCerrarModalAgregarProducto" aria-label="Close"></button>
+              <h5 class="modal-title" id="txtDatoUser">Hola</h5>
+              <button type="button" class="btn-close btnCerrarModalAgregarInfo" aria-label="Close"></button>
             </div>
-            <form id="formularioAgregarProducto">
+            <form id="formularioAgregarInfo">
               <div class="modal-body">
                 <div class="mb-3">
-                  <label class="form-label">Facturación del día</label>
-                  <input type="number" class="form-control" id="inputPrecioCompra" required/>
+                  <label class="form-label">Ingrese su domicilio</label>
+                  <input type="text" class="form-control" id="inputDomicilio" required/>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Porcentaje de ganancia</label>
-                  <input type="number" class="form-control" id="inputPrecioVenta" required/>
+                  <label class="form-label">Ingrese su email</label>
+                  <input type="text" class="form-control" id="inputEmail" required/>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btnCerrarModalAgregarProducto">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Calcular</button>
+                <button type="button" class="btn btn-secondary btnCerrarModalAgregarInfo">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
               </div>
             </form>
           </div>
         </div>
-      </div>
       </div>
       <hr/>
 
@@ -311,6 +343,8 @@
       </div>
     </footer>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="../js/filtros.js"></script>
   </body>
 </html>
