@@ -62,6 +62,8 @@ function inicializarElementos() {
     contenedorDatosUser = document.getElementById("contenedorDatosUsuario")
     botonToast = document.getElementById("btnGuardar");
 
+    contenedorDatosCliente = document.getElementById("contenedorDatosClientes")
+
 }    
 
 function inicializarEventos() {
@@ -115,6 +117,8 @@ function inicializarEventos() {
     existeUsuario = "";
     mostrarFormularioIdentificacion();
     contenedorVentas.innerHTML = ``;
+    contenedorDatosUser.innerHTML = ``;
+    contenedorDatosCliente.innerHTML = ``;
   }
 
   function mostrarSwal() {
@@ -267,7 +271,8 @@ function comunicarComunicacion(){
 
 //AGREGAR DATOS USUARIO
 function abrirModalAgregarUser() {
-    contenedorDatosUser.innerHTML = `` 
+    contenedorDatosUser.innerHTML = ``;
+    contenedorDatosCliente.innerHTML = ``; 
     modalUser.show();
 }
 
@@ -307,13 +312,59 @@ function informarDatos(){
         <h3>Usuario: ${existeUsuario.nombre}</h3>
         <p class="card-text">Domicilio: <b> ${domicilio}</b></p>
         <p class="card-text">Email: <b> ${email}</b></p>
+        <p class="card-text">Datos de mis clientes:</p>
         </div>
     </div>
     </div>`; 
     contenedorDatosUser.append(informe);
+    consultarProductosServer();
     
 }
 
+//FETCH PARA MOSTRAR LOS CLIENTES DEL VENDEDOR
+let clientes = []
+
+function pintarClientes() {
+    contenedorDatosCliente.innerHTML = "";
+    clientes.forEach((cliente) => {
+      let column = document.createElement("div");
+      column.className = "col-md-4 mt-3";
+      column.id = `columna-${cliente.id}`;
+      column.innerHTML = `
+              <div class="card">
+                  <div class="card-body">
+                  <p class="card-text">ID:
+                      <b>${cliente.id}</b>
+                  </p>
+                  <p class="card-text">Nombre:
+                      <b>${cliente.name}</b>
+                  </p>
+                  <p class="card-text">Usuario:
+                      <b>${cliente.usuario}</b>
+                  </p>
+                  <p class="card-text">Email:
+                      <b>${cliente.email}</b>
+                  </p>
+                  </div>
+              </div>`;
+  
+        contenedorDatosCliente.append(column);
+  
+    });
+  }
+
+async function consultarProductosServer() {  
+    try {
+      const response = await fetch(
+        "https://634408152dadea1175b32445.mockapi.io/clientes"
+      );
+      const data = await response.json();
+      clientes = [...data];
+      pintarClientes();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
 //INTERACCION CON EL COMPRADOR
@@ -394,9 +445,17 @@ function agregarCarritoClick(event){
     const productoNuevo = new carritoProducto(prodImg, prodNombre, prodPrecio)
     productos.push(productoNuevo)
 
-    agregarCarrito (prodNombre, prodPrecio, prodImg)
+    agregarCarrito (prodNombre, prodPrecio, prodImg);
+    mostrarToastCarrito()
 }
 
+function mostrarToastCarrito() {
+    Toastify({
+      text: "el producto se cargó correctamente",
+      duration: 3000,
+      close: true,
+    }).showToast();
+  }
 
 function agregarCarrito (prodNombre, prodPrecio, prodImg){
     const productosCarrito = carritoContainer.querySelectorAll(".prodAgregadoNombre")
@@ -502,8 +561,17 @@ function modificarCantidad(event){
 
 function comprarClick(){
     carritoContainer.innerHTML = ""
+    comunicarCompra();
     actualizarTotalCarrito()
 }
+
+function comunicarCompra(){
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Gracias por su compra',
+      })  
+} 
 
 function actualizarProductosStorage() {
     let productosJSON = JSON.stringify(productos);
@@ -538,7 +606,6 @@ if (usuarioJSON) {
 function main() {
 inicializarElementos();
 inicializarEventos();
-// obtenerProductosStorage();
 obtenerUsuarioStorage();
 }
 
