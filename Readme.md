@@ -8,3 +8,6 @@ El usuario de Nutrimarket puede iniciar sesión y calcular cual fue su facturaci
 Por otro lado, el usuario puede sumar datos como su domicilio y su email, en ese caso al cargar sus datos aparecera un toastify que dice que cargó los datos correctamente. 
 
 Por último, antes de cerrar sesión se le consulta mediante un sweet alert al usuario si esta seguro que desea cerrar su sesión. 
+
+JAVASCRIPT
+Incorporé javascript al sitio web en la página productos. La idea es que por un lado el cliente tenga la posibilidad de comprar productos solo pequeños electrodomésticos mediante la web y a su vez, que el vendedor de Nutrimarket pueda llevar un control de sus ventas, informar la situación de ventas a las diferentes áreas y a su vez tener informacion de sus clientes en su sector. 
