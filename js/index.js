@@ -57,6 +57,7 @@ function inicializarElementos() {
     modalUser = new bootstrap.Modal(modalAddUser);
 
     formularioUser = document.getElementById("formularioAgregarInfo");
+    textoDatosUser= document.getElementById("txtDatoUser");
     domicilio = document.getElementById("inputDomicilio");
     email = document.getElementById("inputEmail");
     contenedorDatosUser = document.getElementById("contenedorDatosUsuario")
@@ -272,7 +273,7 @@ function comunicarComunicacion(){
 //AGREGAR DATOS USUARIO
 function abrirModalAgregarUser() {
     contenedorDatosUser.innerHTML = ``;
-    contenedorDatosCliente.innerHTML = ``; 
+    contenedorDatosCliente.innerHTML = ``;
     modalUser.show();
 }
 
@@ -310,9 +311,9 @@ function informarDatos(){
     <div class="card">
         <div class="card-body">
         <h3>Usuario: ${existeUsuario.nombre}</h3>
-        <p class="card-text">Domicilio: <b> ${domicilio}</b></p>
+        <p class="card-text">Sector de trabajo: <b> ${domicilio}</b></p>
         <p class="card-text">Email: <b> ${email}</b></p>
-        <p class="card-text">Datos de mis clientes:</p>
+        <p class="card-text">Datos de los clientes del sector<b> ${domicilio}</b>:</p>
         </div>
     </div>
     </div>`; 
@@ -601,7 +602,6 @@ if (usuarioJSON) {
     mostrarTextoUsuario();
 }
 }
-
 
 function main() {
 inicializarElementos();
